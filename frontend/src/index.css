@@ -1,0 +1,126 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Senior-friendly defaults */
+  body {
+    @apply text-base antialiased;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* High contrast focus indicators */
+  *:focus {
+    @apply outline-none ring-4 ring-senior-primary ring-opacity-50;
+  }
+
+  /* Larger, more accessible buttons */
+  button {
+    @apply min-h-[44px] px-6 py-3 text-base font-semibold rounded-senior;
+  }
+
+  /* Larger input fields */
+  input, select, textarea {
+    @apply min-h-[44px] text-base rounded-senior;
+  }
+
+  /* High contrast links */
+  a {
+    @apply text-senior-primary underline hover:text-senior-primary/80 font-medium;
+  }
+}
+
+@layer components {
+  /* Primary button - large and clear */
+  .btn-primary {
+    @apply bg-senior-primary text-white hover:bg-senior-primary/90
+           active:bg-senior-primary/80 disabled:bg-gray-300 disabled:cursor-not-allowed
+           transition-colors duration-150;
+  }
+
+  /* Secondary button */
+  .btn-secondary {
+    @apply bg-gray-200 text-gray-900 hover:bg-gray-300
+           active:bg-gray-400 disabled:bg-gray-100 disabled:cursor-not-allowed
+           transition-colors duration-150;
+  }
+
+  /* Danger button */
+  .btn-danger {
+    @apply bg-senior-danger text-white hover:bg-senior-danger/90
+           active:bg-senior-danger/80 disabled:bg-gray-300 disabled:cursor-not-allowed
+           transition-colors duration-150;
+  }
+
+  /* Card component */
+  .card {
+    @apply bg-white rounded-senior shadow-md border-2 border-gray-200 p-6;
+  }
+
+  /* Category badge */
+  .category-badge {
+    @apply inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold;
+  }
+
+  /* Email list item */
+  .email-item {
+    @apply p-6 border-b-2 border-gray-200 hover:bg-gray-50 cursor-pointer
+           transition-colors duration-150;
+  }
+
+  .email-item.unread {
+    @apply bg-blue-50 border-l-4 border-l-senior-primary;
+  }
+
+  /* Navigation item */
+  .nav-item {
+    @apply flex items-center gap-3 px-4 py-4 text-lg font-medium rounded-senior
+           hover:bg-gray-100 transition-colors duration-150;
+  }
+
+  .nav-item.active {
+    @apply bg-senior-primary text-white hover:bg-senior-primary/90;
+  }
+}
+
+@layer utilities {
+  /* Text shadow for better readability */
+  .text-shadow {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+
+  /* High contrast mode utilities */
+  .high-contrast {
+    @apply contrast-125 saturate-150;
+  }
+}
+
+/* Senior-friendly scrollbar */
+::-webkit-scrollbar {
+  width: 16px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Ensure minimum touch target size for mobile */
+@media (max-width: 768px) {
+  button, a, input[type="checkbox"], input[type="radio"] {
+    min-height: 48px;
+    min-width: 48px;
+  }
+}
