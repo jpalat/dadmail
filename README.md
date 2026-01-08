@@ -131,11 +131,16 @@ See [CLAUDE.md](CLAUDE.md) for detailed development documentation including:
 - Database migrations
 - Architecture details
 
+For AI agents: See [AGENTS.md](AGENTS.md) for session completion protocol and beads workflow.
+
 ## Issue Tracking
 
 This project uses [Beads](https://github.com/steveyegge/beads) for issue tracking.
 
 ```bash
+# Get started with beads
+bd onboard
+
 # View open issues
 bd list --status=open
 
