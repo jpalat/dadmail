@@ -1,4 +1,4 @@
-import axios, { AxiosInstance, AxiosError } from 'axios';
+import axios, { type AxiosInstance, type AxiosError } from 'axios';
 import env from '../config/env';
 
 // Create axios instance with default config

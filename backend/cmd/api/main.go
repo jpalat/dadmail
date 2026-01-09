@@ -12,6 +12,7 @@ import (
 	"github.com/gofiber/fiber/v2/middleware/recover"
 	"github.com/jay/dadmail/internal/api"
 	"github.com/jay/dadmail/internal/config"
+	"github.com/jay/dadmail/internal/repository"
 )
 
 func main() {
@@ -20,6 +21,14 @@ func main() {
 	if err != nil {
 		log.Fatalf("Failed to load configuration: %v", err)
 	}
+
+	// Connect to database
+	db, err := repository.NewDB(&cfg.Database)
+	if err != nil {
+		log.Fatalf("Failed to connect to database: %v", err)
+	}
+	defer db.Close()
+	log.Println("Successfully connected to database")
 
 	// Initialize Fiber app
 	app := fiber.New(fiber.Config{
@@ -40,7 +49,7 @@ func main() {
 	}))
 
 	// Setup routes
-	api.SetupRoutes(app, cfg)
+	api.SetupRoutes(app, cfg, db)
 
 	// Health check endpoint
 	app.Get("/health", func(c *fiber.Ctx) error {
